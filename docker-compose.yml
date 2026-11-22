@@ -1,0 +1,13 @@
+# Disposable local stores for this package's own test suite:
+# `docker compose up -d` before `mix test` / `mix precommit`.
+# The test suite runs against both; override with PERIODICAL_REDIS_URLS
+# (comma-separated redis:// URLs) to point it elsewhere.
+services:
+  redis:
+    image: redis:7.4-alpine
+    ports:
+      - "6390:6379"
+  keydb:
+    image: eqalpha/keydb:latest
+    ports:
+      - "6391:6379"
